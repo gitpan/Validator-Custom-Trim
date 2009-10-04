@@ -1,12 +1,13 @@
 Build.PL
 Changes
 lib/Validator/Custom/Trim.pm
+Makefile.PL
 MANIFEST
+META.yml
 README
 t/00-load.t
 t/01-core.t
+t/01-core_lower_case.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
-Makefile.PL
-META.yml

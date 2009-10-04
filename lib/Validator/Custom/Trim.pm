@@ -4,36 +4,55 @@ use base 'Validator::Custom';
 use warnings;
 use strict;
 
-our $VERSION = '0.0201';
+our $VERSION = '0.0301';
 
 __PACKAGE__->add_constraint(
-    TRIM => sub {
-        my $value = shift;
-        $value =~ s/^\s*(.*?)\s*$/$1/ms;
-        return (1, $value);
-    },
+    trim          => \&Validator::Custom::HTMLForm::Constraints::trim,
+    trim_lead     => \&Validator::Custom::HTMLForm::Constraints::trim_lead,
+    trim_trail    => \&Validator::Custom::HTMLForm::Constraints::trim_trail,
+    trim_collapse => \&Validator::Custom::HTMLForm::Constraints::trim_collapse,
     
-    TRIM_LEAD => sub {
-        my $value = shift;
-        $value =~ s/^\s+(.*)$/$1/ms;
-        return (1, $value);
-    },
-    
-    TRIM_TRAIL => sub {
-        my $value = shift;
-        $value =~ s/^(.*?)\s+$/$1/ms;
-        return (1, $value);
-    },
-    
-    TRIM_COLLAPSE => sub {
-        my $value = shift;
-        if (defined $value) {
-            $value =~ s/\s+/ /g;
-            $value =~ s/^\s*(.*?)\s*$/$1/ms;
-        }
-        return (1, $value);
-    }
+    # Provide FormValidator::Simple Compatiblity
+    TRIM          => \&Validator::Custom::HTMLForm::Constraints::trim,
+    TRIM_LEAD     => \&Validator::Custom::HTMLForm::Constraints::trim_lead,
+    TRIM_TRAIL    => \&Validator::Custom::HTMLForm::Constraints::trim_trail,
+    TRIM_COLLAPSE => \&Validator::Custom::HTMLForm::Constraints::trim_collapse
 );
+
+package Validator::Custom::HTMLForm::Constraints;
+use strict;
+use warnings;
+
+sub trim {
+    my $value = shift;
+    $value =~ s/^\s*(.*?)\s*$/$1/ms;
+    return (1, $value);
+}
+
+sub trim_lead {
+    my $value = shift;
+    $value =~ s/^\s+(.*)$/$1/ms;
+    return (1, $value);
+}
+
+sub trim_trail{
+    my $value = shift;
+    $value =~ s/^(.*?)\s+$/$1/ms;
+    return (1, $value);
+}
+
+sub trim_collapse {
+    my $value = shift;
+    if (defined $value) {
+        $value =~ s/\s+/ /g;
+        $value =~ s/^\s*(.*?)\s*$/$1/ms;
+    }
+    return (1, $value);
+}
+
+package Validator::Custom::Trim;
+
+1;
 
 =head1 NAME
 
@@ -41,7 +60,7 @@ Validator::Custom::Trim - Triming based on Validator::Custom;
 
 =head1 VERSION
 
-Version 0.0101
+Version 0.0301
 
 =cut
 
@@ -58,16 +77,16 @@ Version 0.0101
 
     my $validation_rule = [
       key1 => [
-          ['TRIM']           # ' 123 ' -> '123'
+          ['trim']           # ' 123 ' -> '123'
       ],
       key2  => [
-          ['TRIM_COLLAPSE']  # "  \n a \r\n b\nc  \t" -> 'a b c'
+          ['trim_collapse']  # "  \n a \r\n b\nc  \t" -> 'a b c'
       ],
       key3      => [
-          ['TRIM_LEAD']      # '  abc  ' -> 'abc   '
+          ['trim_lead']      # '  abc  ' -> 'abc   '
       ],
       key4     => [
-          ['TRIM_TRAIL']     # '  def  ' -> '   def'
+          ['trim_trail']     # '  def  ' -> '   def'
       ]
     ];
     
@@ -83,19 +102,23 @@ See L<Validator::Custom> document.
 
 =head1 CONSTRAINTS
 
-=head2 TRIM
+The following is constraint functions
 
-Trim leading and trailing white space
+Upper case is also availabule, like TRIM
 
-=head2 TRIM_LEAD
+=head2 trim
 
-Trim leading white space
+trim leading and trailing white space
 
-=head2 TRIM_TRAIL
+=head2 trim_lead
 
-Trim trailing white space
+trim leading white space
 
-=head2 TRIM_COLLAPSE
+=head2 trim_trail
+
+trim trailing white space
+
+=head2 trim_collapse
 
 Trim leading and trailing white space, and collapse all whitespace characters into a single space.
 
