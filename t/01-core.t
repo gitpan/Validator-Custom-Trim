@@ -10,7 +10,7 @@ use warnings;
         right     => '  def  '
     };
 
-    my $validators = [
+    my $validation_rule = [
       int_param => [
           ['TRIM']
       ],
@@ -26,7 +26,7 @@ use warnings;
     ];
 
     use Validator::Custom::Trim;
-    my $results = Validator::Custom::Trim->new->validate($data,$validators)->results;
+    my $results = Validator::Custom::Trim->new->validate($data,$validation_rule)->results;
 
     is_deeply(
         $results, 

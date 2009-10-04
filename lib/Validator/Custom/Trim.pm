@@ -4,7 +4,7 @@ use base 'Validator::Custom';
 use warnings;
 use strict;
 
-our $VERSION = '0.0101';
+our $VERSION = '0.0201';
 
 __PACKAGE__->add_constraint(
     TRIM => sub {
@@ -56,7 +56,7 @@ Version 0.0101
         key4  => '  def  '
     };
 
-    my $validators = [
+    my $validation_rule = [
       key1 => [
           ['TRIM']           # ' 123 ' -> '123'
       ],
@@ -72,7 +72,7 @@ Version 0.0101
     ];
     
     my $vc_trim = Validator::Custom::Trim->new;
-    my $results = $vc_trim->validate($data, $validators)->results;
+    my $results = $vc_trim->validate($data, $validation_rule)->results;
     
 
 =head1 DESCRIPTION

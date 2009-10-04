@@ -1,6 +1,6 @@
 ---
 name: Validator-Custom-Trim
-version: 0.0101
+version: 0.0201
 author:
   - 'Yuki Kimoto <kimoto.yuki@gmail.com>'
 abstract: Triming based on Validator::Custom;
@@ -8,13 +8,13 @@ license: perl
 resources:
   license: ~
 requires:
-  Validator::Custom: 0.0206
+  Validator::Custom: 0.0301
 build_requires:
   Test::More: 0
 provides:
   Validator::Custom::Trim:
     file: lib/Validator/Custom/Trim.pm
-    version: 0.0101
+    version: 0.0201
 generated_by: Module::Build version 0.31012
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

@@ -11,7 +11,7 @@ my $builder = Module::Build->new(
         'Test::More' => 0,
     },
     requires => {
-        'Validator::Custom' => 0.0206
+        'Validator::Custom' => 0.0301
     },
     add_to_cleanup      => [ 'Validator-Custom-Trim-*' ],
     create_makefile_pl => 'traditional',
