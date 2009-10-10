@@ -26,10 +26,10 @@ use warnings;
     ];
 
     use Validator::Custom::Trim;
-    my $results = Validator::Custom::Trim->new->validate($data,$validation_rule)->results;
+    my $products = Validator::Custom::Trim->new->validate($data,$validation_rule)->products;
 
     is_deeply(
-        $results, 
+        $products, 
         { int_param => '123', left => "abc  ", right => '  def', collapse => "a b c"},
         'trim check'
     );
