@@ -4,7 +4,7 @@ use base 'Validator::Custom';
 use warnings;
 use strict;
 
-our $VERSION = '0.0401';
+our $VERSION = '0.0402';
 
 __PACKAGE__->add_constraint(
     trim          => \&Validator::Custom::HTMLForm::Constraints::trim,
@@ -60,7 +60,7 @@ Validator::Custom::Trim - Triming based on Validator::Custom;
 
 =head1 VERSION
 
-Version 0.0401
+Version 0.0402
 
 =cut
 
