@@ -1,4 +1,4 @@
-use Test::More 'no_plan';
+use Test::More tests => 1;
 use strict;
 use warnings;
 
@@ -12,16 +12,16 @@ use warnings;
 
     my $validation_rule = [
       int_param => [
-          ['TRIM']
+          ['trim']
       ],
       collapse  => [
-          ['TRIM_COLLAPSE']
+          ['trim_collapse']
       ],
       left      => [
-          ['TRIM_LEAD']
+          ['trim_lead']
       ],
       right     => [
-          ['TRIM_TRAIL']
+          ['trim_trail']
       ]
     ];
 

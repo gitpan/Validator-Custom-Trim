@@ -1,25 +1,19 @@
 package Validator::Custom::Trim;
-use base 'Validator::Custom';
 
 use warnings;
 use strict;
 
-our $VERSION = '0.0402';
+use base 'Validator::Custom';
 
 __PACKAGE__->add_constraint(
     trim          => \&Validator::Custom::HTMLForm::Constraints::trim,
     trim_lead     => \&Validator::Custom::HTMLForm::Constraints::trim_lead,
     trim_trail    => \&Validator::Custom::HTMLForm::Constraints::trim_trail,
-    trim_collapse => \&Validator::Custom::HTMLForm::Constraints::trim_collapse,
-    
-    # Provide FormValidator::Simple Compatiblity
-    TRIM          => \&Validator::Custom::HTMLForm::Constraints::trim,
-    TRIM_LEAD     => \&Validator::Custom::HTMLForm::Constraints::trim_lead,
-    TRIM_TRAIL    => \&Validator::Custom::HTMLForm::Constraints::trim_trail,
-    TRIM_COLLAPSE => \&Validator::Custom::HTMLForm::Constraints::trim_collapse
+    trim_collapse => \&Validator::Custom::HTMLForm::Constraints::trim_collapse
 );
 
 package Validator::Custom::HTMLForm::Constraints;
+
 use strict;
 use warnings;
 
@@ -56,13 +50,15 @@ package Validator::Custom::Trim;
 
 =head1 NAME
 
-Validator::Custom::Trim - Triming based on Validator::Custom; 
+Validator::Custom::Trim - Space triming;
 
 =head1 VERSION
 
-Version 0.0402
+Version 0.0501
 
 =cut
+
+our $VERSION = '0.0501';
 
 =head1 SYNOPSIS
 
@@ -75,7 +71,7 @@ Version 0.0402
         key4  => '  def  '
     };
 
-    my $validation_rule = [
+    my $rule = [
       key1 => [
           ['trim']           # ' 123 ' -> '123'
       ],
@@ -90,21 +86,16 @@ Version 0.0402
       ]
     ];
     
-    my $vc_trim = Validator::Custom::Trim->new;
-    my $products = $vc_trim->validate($data, $validation_rule)->products;
-    my $key1_product = $products->{key1};
+    my $vc = Validator::Custom::Trim->new;
+    my $result = $vc->validate($data, $rule);
+    my $trimed = $result->products->{'key1'};
 
-=head1 DESCRIPTION
+=head1 METHODS
 
-This module usage is same as L<Validator::Custom>.
-
-See L<Validator::Custom> document.
+This module is subclass of L<Validator::Custom>.
+All methods of L<Validator::Custom> is available.
 
 =head1 CONSTRAINTS
-
-The following is constraint functions
-
-Upper case is also availabule, like TRIM
 
 =head2 trim
 
@@ -126,52 +117,9 @@ Trim leading and trailing white space, and collapse all whitespace characters in
 
 Yuki Kimoto, C<< <kimoto.yuki at gmail.com> >>
 
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-validator-custom-trim at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Validator-Custom-Trim>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Validator::Custom::Trim
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Validator-Custom-Trim>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Validator-Custom-Trim>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Validator-Custom-Trim>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Validator-Custom-Trim/>
-
-=back
-
-
 =head1 SEE ALSO
 
-L<Validator::Custom>,
-
-L<FormValidator::Simple>,L<FormValidator::Simple::Plugin::Trim>
-
-L<Data::FormValidator>, L<Data::FormValidator::Filters>
+L<Validator::Custom>
 
 =head1 COPYRIGHT & LICENSE
 
@@ -180,7 +128,4 @@ Copyright 2009 Yuki Kimoto, all rights reserved.
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
-
 =cut
-
-1; # End of Validator::Custom::Trim
