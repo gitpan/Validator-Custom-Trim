@@ -8,7 +8,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/Validator/Custom/Trim.pm',
           'PREREQ_PM' => {
                            'Test::More' => 0,
-                           'Validator::Custom' => '0.0801'
+                           'Validator::Custom' => '0.1002'
                          }
         )
 ;

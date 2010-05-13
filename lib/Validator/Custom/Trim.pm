@@ -5,7 +5,7 @@ use strict;
 
 use base 'Validator::Custom';
 
-__PACKAGE__->add_constraint(
+__PACKAGE__->register_constraint(
     trim          => \&Validator::Custom::HTMLForm::Constraints::trim,
     trim_lead     => \&Validator::Custom::HTMLForm::Constraints::trim_lead,
     trim_trail    => \&Validator::Custom::HTMLForm::Constraints::trim_trail,
@@ -54,11 +54,11 @@ Validator::Custom::Trim - Space triming;
 
 =head1 VERSION
 
-Version 0.0501
+Version 0.0502
 
 =cut
 
-our $VERSION = '0.0501';
+our $VERSION = '0.0502';
 
 =head1 SYNOPSIS
 
