@@ -20,19 +20,19 @@ use warnings;
 sub trim {
     my $value = shift;
     $value =~ s/^\s*(.*?)\s*$/$1/ms;
-    return (1, $value);
+    return [1, $value];
 }
 
 sub trim_lead {
     my $value = shift;
     $value =~ s/^\s+(.*)$/$1/ms;
-    return (1, $value);
+    return [1, $value];
 }
 
 sub trim_trail{
     my $value = shift;
     $value =~ s/^(.*?)\s+$/$1/ms;
-    return (1, $value);
+    return [1, $value];
 }
 
 sub trim_collapse {
@@ -41,7 +41,7 @@ sub trim_collapse {
         $value =~ s/\s+/ /g;
         $value =~ s/^\s*(.*?)\s*$/$1/ms;
     }
-    return (1, $value);
+    return [1, $value];
 }
 
 package Validator::Custom::Trim;
@@ -54,11 +54,11 @@ Validator::Custom::Trim - Space triming;
 
 =head1 VERSION
 
-Version 0.0502
+Version 0.0503
 
 =cut
 
-our $VERSION = '0.0502';
+our $VERSION = '0.0503';
 
 =head1 SYNOPSIS
 
@@ -88,7 +88,7 @@ our $VERSION = '0.0502';
     
     my $vc = Validator::Custom::Trim->new;
     my $result = $vc->validate($data, $rule);
-    my $trimed = $result->products->{'key1'};
+    my $trimed = $result->data->{'key1'};
 
 =head1 METHODS
 
