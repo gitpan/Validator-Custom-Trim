@@ -1,6 +1,7 @@
 Build.PL
 Changes
 lib/Validator/Custom/Trim.pm
+lib/Validator/Custom/Trim/Constraints.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml

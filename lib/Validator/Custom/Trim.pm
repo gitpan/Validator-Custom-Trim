@@ -5,46 +5,14 @@ use strict;
 
 use base 'Validator::Custom';
 
+use Validator::Custom::Trim::Constraints;
+
 __PACKAGE__->register_constraint(
-    trim          => \&Validator::Custom::HTMLForm::Constraints::trim,
-    trim_lead     => \&Validator::Custom::HTMLForm::Constraints::trim_lead,
-    trim_trail    => \&Validator::Custom::HTMLForm::Constraints::trim_trail,
-    trim_collapse => \&Validator::Custom::HTMLForm::Constraints::trim_collapse
+    trim          => \&Validator::Custom::Trim::Constraints::trim,
+    trim_lead     => \&Validator::Custom::Trim::Constraints::trim_lead,
+    trim_trail    => \&Validator::Custom::Trim::Constraints::trim_trail,
+    trim_collapse => \&Validator::Custom::Trim::Constraints::trim_collapse
 );
-
-package Validator::Custom::HTMLForm::Constraints;
-
-use strict;
-use warnings;
-
-sub trim {
-    my $value = shift;
-    $value =~ s/^\s*(.*?)\s*$/$1/ms;
-    return [1, $value];
-}
-
-sub trim_lead {
-    my $value = shift;
-    $value =~ s/^\s+(.*)$/$1/ms;
-    return [1, $value];
-}
-
-sub trim_trail{
-    my $value = shift;
-    $value =~ s/^(.*?)\s+$/$1/ms;
-    return [1, $value];
-}
-
-sub trim_collapse {
-    my $value = shift;
-    if (defined $value) {
-        $value =~ s/\s+/ /g;
-        $value =~ s/^\s*(.*?)\s*$/$1/ms;
-    }
-    return [1, $value];
-}
-
-package Validator::Custom::Trim;
 
 1;
 
@@ -54,11 +22,11 @@ Validator::Custom::Trim - Space triming;
 
 =head1 VERSION
 
-Version 0.0503
+Version 0.0504
 
 =cut
 
-our $VERSION = '0.0503';
+our $VERSION = '0.0504';
 
 =head1 SYNOPSIS
 
@@ -116,10 +84,6 @@ Trim leading and trailing white space, and collapse all whitespace characters in
 =head1 AUTHOR
 
 Yuki Kimoto, C<< <kimoto.yuki at gmail.com> >>
-
-=head1 SEE ALSO
-
-L<Validator::Custom>
 
 =head1 COPYRIGHT & LICENSE
 

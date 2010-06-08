@@ -1,6 +1,6 @@
 ---
 name: Validator-Custom-Trim
-version: 0.0503
+version: 0.0504
 author:
   - 'Yuki Kimoto <kimoto.yuki@gmail.com>'
 abstract: Space triming;
@@ -12,11 +12,11 @@ requires:
 build_requires:
   Test::More: 0
 provides:
-  Validator::Custom::HTMLForm::Constraints:
-    file: lib/Validator/Custom/Trim.pm
   Validator::Custom::Trim:
     file: lib/Validator/Custom/Trim.pm
-    version: 0.0503
+    version: 0.0504
+  Validator::Custom::Trim::Constraints:
+    file: lib/Validator/Custom/Trim/Constraints.pm
 generated_by: Module::Build version 0.31012
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
