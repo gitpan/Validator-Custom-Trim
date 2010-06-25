@@ -22,11 +22,11 @@ Validator::Custom::Trim - Space triming;
 
 =head1 VERSION
 
-Version 0.0504
+Version 0.0505
 
 =cut
 
-our $VERSION = '0.0504';
+our $VERSION = '0.0505';
 
 =head1 SYNOPSIS
 
@@ -58,12 +58,19 @@ our $VERSION = '0.0504';
     my $result = $vc->validate($data, $rule);
     my $trimed = $result->data->{'key1'};
 
+=head1 DESCRIPTIONS
+
+L<Validator::Custom::Trim> is space triming filter.
+This class inherit all methods from L<Validator::Custom>.
+If you know usage of This module, See L<Validator::Custom>
+documentation.
+
 =head1 METHODS
 
 This module is subclass of L<Validator::Custom>.
 All methods of L<Validator::Custom> is available.
 
-=head1 CONSTRAINTS
+=head1 CONSTRAINT FUNCTIONS
 
 =head2 trim
 
@@ -80,6 +87,17 @@ trim trailing white space
 =head2 trim_collapse
 
 Trim leading and trailing white space, and collapse all whitespace characters into a single space.
+
+=head2 STABILITY
+
+L<Validator::Custom::HTMLForm> is stable.
+The following constraint function keep backword compatible.
+
+    # Constraint functions
+    trim
+    trim_lead
+    trim_trail
+    trim_collapse
 
 =head1 AUTHOR
 

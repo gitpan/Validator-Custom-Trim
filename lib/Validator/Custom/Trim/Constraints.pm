@@ -32,7 +32,7 @@ sub trim_collapse {
 
 =head1 NAME
 
-Validator::Custom::Trim - Space triming;
+Validator::Custom::Trim::Constraints - Space Trim Functions
 
 =head1 CONSTRAINTS
 

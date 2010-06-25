@@ -1,5 +1,7 @@
+0.0505
+  Validator::Custom::Trim became stable. Backword compatible of 0.0505 is keeped. You can use Validator::Custom::Trim at ease.
 0.0504
-  departed Validator::Custom::Trim::Constraints to a file
+  departed Validator::Custom::Trim::Constraints to one file
 0.0503
   catch up with Validator::Custom vup 0.1101
 0.0502
