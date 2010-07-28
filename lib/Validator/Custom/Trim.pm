@@ -18,15 +18,16 @@ __PACKAGE__->register_constraint(
 
 =head1 NAME
 
-Validator::Custom::Trim - Space triming;
-
-=head1 VERSION
-
-Version 0.0505
+Validator::Custom::Trim - (Deprecated) Space triming;
 
 =cut
 
-our $VERSION = '0.0505';
+our $VERSION = '0.0506';
+
+=head1 CAUTHION
+
+B<This module is deprecated. constraints of this module moved to >
+L<Validator::Custom>.
 
 =head1 SYNOPSIS
 

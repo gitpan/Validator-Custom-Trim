@@ -1,9 +1,9 @@
 ---
 name: Validator-Custom-Trim
-version: 0.0505
+version: 0.0506
 author:
   - 'Yuki Kimoto <kimoto.yuki@gmail.com>'
-abstract: Space triming;
+abstract: (Deprecated) Space triming;
 license: perl
 resources:
   license: ~
@@ -14,7 +14,7 @@ build_requires:
 provides:
   Validator::Custom::Trim:
     file: lib/Validator/Custom/Trim.pm
-    version: 0.0505
+    version: 0.0506
   Validator::Custom::Trim::Constraints:
     file: lib/Validator/Custom/Trim/Constraints.pm
 generated_by: Module::Build version 0.31012

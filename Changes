@@ -1,3 +1,5 @@
+0.0506
+  deprecated Validator::Custom::Trim. constraints is moved to Validator::Custom
 0.0505
   Validator::Custom::Trim became stable. Backword compatible of 0.0505 is keeped. You can use Validator::Custom::Trim at ease.
 0.0504
